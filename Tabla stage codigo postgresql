@@ -1,0 +1,23 @@
+Create table stage
+
+(
+
+Date_original date,
+
+Country varchar(14),
+
+Distribuitor varchar(14),
+
+Brand varchar(8),
+
+Operators varchar(8),
+
+Unit_Cost int,
+
+Amount               int,
+
+Unit_Price int    ,
+
+Sales int
+
+)
