@@ -1,0 +1,25 @@
+Create table dates
+
+(
+
+Year int,
+
+Quarter int,
+
+Month   int,
+
+Month_Name varchar(3),
+
+Month_Year varchar(8),
+
+Week_Day          int,
+
+Day_Name varchar(3),
+
+Week_Number  int,
+
+Quater_Q            varchar(2),
+
+Dates date
+
+)
