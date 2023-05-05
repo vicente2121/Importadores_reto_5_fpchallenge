@@ -1,0 +1,53 @@
+import pandas as pd
+
+import psycopg2
+
+
+
+
+# Conectarse a la base de datos
+
+conn = psycopg2.connect(database="Prueba_dos", user="postgres", password="contraseña", host=" ", port="5432")
+
+cur = conn.cursor()
+
+
+
+
+# Leer el archivo de Excel en un dataframe de pandas
+
+df = pd.read_excel("C:\\Business Intel_Phone Sales_Prep with Calendar Table.xlsx")
+
+
+
+
+# Convertir el dataframe de pandas en una lista de tuplas
+
+tuples = [tuple(x) for x in df.to_numpy()]
+
+
+
+
+# Crear una cadena de inserción de SQL colocando nuestra tabla creada previeamente
+
+values = ",".join(["%s"] * len(tuples))
+
+insert_stmt = f"INSERT INTO stage (Date_original, Country, Distribuitor,Brand,Operators,Unit_Cost,Amount,Unit_Price,Sales) VALUES {values}"
+
+
+
+
+# Insertar las tuplas en la tabla de la base de datos
+
+cur.execute(insert_stmt, tuples)
+
+conn.commit()
+
+
+
+
+# Cerrar la conexión
+
+cur.close()
+
+conn.close()
